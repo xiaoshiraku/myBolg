@@ -31,7 +31,7 @@
   </template>
 
   <script setup>
-  import { defineProps } from 'vue';
+
   // 定义接收的文章数据结构
   defineProps({
       article: {
@@ -62,7 +62,7 @@
   
   /* 其他样式保持不变 */
   .article-card {
-    width: 80%;
+    width: 100%;
     margin: 20px auto;
     overflow: hidden; /* 防止内容溢出卡片 */
   }

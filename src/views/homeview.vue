@@ -1,6 +1,9 @@
 <template>
     <div class="article-container">
         <ArticleCard :article="articleData" />
+        <ArticleCard :article="articleData" />
+        <ArticleCard :article="articleData" />
+        <ArticleCard :article="articleData" />
         <!-- 可循环渲染多个文章，比如从接口获取列表数据 -->
         <div v-for="(item, index) in articleList" :key="index">
             <ArticleCard :article="item" />
@@ -45,5 +48,4 @@ const articleList = reactive([articleData]);
     justify-content: center;
     margin-top: 20px;
 }
-
 </style>

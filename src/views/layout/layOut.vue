@@ -22,7 +22,7 @@
           </router-view>
         </el-main>
         <!-- 右侧边栏 -->
-        <el-aside width="300px" class="aside-right">
+        <el-aside width="400px" class="aside-right">
           <rightAside></rightAside>
         </el-aside>
       </el-container>
@@ -46,7 +46,7 @@ import Footer from '../../components/footer.vue';
 .main-container {
   height: 98vh; /* 让布局占满整个视口高度 */
   display: flex;
-  flex-direction: vertical;
+  flex-direction: column;
 }
 
 .content-and-footer {
@@ -62,19 +62,20 @@ import Footer from '../../components/footer.vue';
 
 .aside-left {
   background-color: #f3f3f3;
-  padding: 0px;
+  padding: 5px;
 }
 
 .aside-right {
   background-color: #f3f3f3;
-  padding: 0px;
+  padding: 5px;
+  overflow: hidden;
 }
 
 .main-content {
   background-color: #f3f3f3;
   flex: 1; /* 让主内容区域占据中间剩余空间 */
-  padding: 0px;
-  overflow-y: auto; /* 主内容滚动 */
+  padding: 5px;
+  /*overflow-y: auto;  主内容滚动 */
 }
 
 .footer-container {
