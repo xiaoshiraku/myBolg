@@ -75,7 +75,6 @@ import Footer from '../../components/footer.vue';
   background-color: #f3f3f3;
   flex: 1; /* 让主内容区域占据中间剩余空间 */
   padding: 5px;
-  /*overflow-y: auto;  主内容滚动 */
 }
 
 .footer-container {

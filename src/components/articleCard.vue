@@ -9,7 +9,7 @@
   
           <div class="article-text">
             <!-- 文章标题、信息、内容 -->
-            <div class="article-title">{{ article.title }}</div> 
+            <div class="article-title" @click="gotoArticle()">{{ article.title }}</div> 
             <div class="article-intro">{{ article.intro }}</div>
             <div class="article-meta">
                   <div class="left-meta">
@@ -31,25 +31,41 @@
   </template>
 
   <script setup>
+  import { useRouter } from 'vue-router';
+  import { ElMessage } from 'element-plus';
+  import { defineProps,ref } from 'vue';
+  const router = useRouter();
+  const rowContextKey = ref({ article: {} }); // 用于存储文章数据
 
-  // 定义接收的文章数据结构
-  defineProps({
-      article: {
-          type: Object,
-          required: true,
-          default: () => ({
-              createBy: 'admin', // 创建者
-              imageUrl: 'https://picsum.photos/400/300', // 默认图片链接
-              title: 'Hello Halo',
-              date: '2025-08-05 20:27',
-              readCount: 12,
-              commentCount: 0,
-              likeCount: 0,
-              category: '默认分类',
-              intro: '如果你看到了这一篇文章，那么证明你已经安装成功了，感谢使用 Halo 进行创作，希望能够使用愉快。'
-          })
-      }
-  });
+// 关键：用 defineProps 接收父组件传递的 article
+const props = defineProps({
+  article: {
+    type: Object,
+    required: true,
+    // 【重要】默认值仅在父组件未传时生效
+    default: () => ({
+      id: 0,
+      createBy: 'admin',
+      imageUrl: 'https://picsum.photos/400/300',
+      title: '默认标题',
+      intro: '默认简介...'
+    })
+  }
+});
+
+
+  const gotoArticle = () => {
+    if (title) {
+    router.push({
+      path: '/blog/article',
+      query: { title: rowContextKey.value.article.title } // 传递文章标题作为查询参数
+    })
+  } else {
+    ElMessage.warning('文章标题不能为空');
+  }
+  };
+
+  
   </script>
 
   <style scoped>
@@ -83,10 +99,17 @@
     flex-direction: column; /* 纵向排列内容 */
   }
 
-.article-title {
+  .article-title {
     font-size: 20px;
     font-weight: bold;
     margin-bottom: 10px;
+    transition: color 0.3s ease; /* 添加过渡效果，使颜色变化更平滑 */
+}
+
+/* 标题悬停效果 */
+.article-title:hover {
+    color: #409eff; /* 使用Element UI的主题蓝色，也可以改为#0066cc等其他蓝色 */
+    cursor: pointer; /* 鼠标变为指针形状，提示可点击 */
 }
 
 .article-meta {

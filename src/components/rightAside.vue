@@ -165,9 +165,17 @@ const motto = ref('在沉默中努力，让成功自己发声');
 
 .publish-article-btn {
   background-color: #ff6699;
+  transition: color 0.3s ease; /* 添加过渡效果，使颜色变化更平滑 */
 }
 
 .user-center-btn {
   background-color: #0099ff;
+  transition: color 0.3s ease; /* 添加过渡效果，使颜色变化更平滑 */
 }  
+.publish-article-btn:hover {
+  background-color: #ff3385; /* 鼠标悬停时的背景色变化 */
+}
+.user-center-btn:hover {
+  background-color: #007acc; /* 鼠标悬停时的背景色变化 */
+}
 </style>
